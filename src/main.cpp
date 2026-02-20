@@ -16,8 +16,7 @@
  *
  *
  *
- * ***************************************/
-wifi_status_t wifi_status;
+ * ********/
 
 void setup() {
     Serial.begin(SERIAL_BAUD);
@@ -31,7 +30,8 @@ void setup() {
 
 
 void loop() {
-    wifi_status = wifi_check_connection();
+    wifi_status_t wifi_status = wifi_check_connection();
     handle_wifi_status(wifi_status);
+
 
 }
