@@ -6,7 +6,6 @@ typedef enum {
     HTTP_STATUS_ERROR = -1,
 } http_code_t;
 
-
 http_code_t http_check_connection(void);
 
 
