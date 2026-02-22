@@ -16,5 +16,8 @@ void debug_handler(system_code_t system_code){
         case WIFI_STATUS_TIMEOUT:
             fast_blinking();
             break;
+        case HTTP_OK:
+            led_off();
+            break;
     }   
 }

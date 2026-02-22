@@ -5,6 +5,7 @@
 #include "main.h"
 #include "hall_sensor.h"
 #include "led.h"
+#include "http.h"
 
 
 
@@ -29,4 +30,5 @@ void loop() {
     update_door_state(&door_state, hall_value);
     bool door_state_altered_indicator;
     door_state_altered_indicator = door_state_altered(&door_state);
+    http_send_negate();
 }
