@@ -1,7 +1,9 @@
 #include <WiFi.h>
 #include <Arduino.h>
+#include "debug_handler.h"
 #include "wifi.h"        /* eigenes Interface immer zuerst */
 #include "auth.h"        /* nur wenn hier benötigt */
+
 
 
 
@@ -13,7 +15,7 @@
  * @return  WIFI_STATUS_OK, WIFI_STATUS_TIMEOUT or WIFI_STATUS_ERROR
  ******************************************************************************/
 
-wifi_status_t wifi_init() {
+system_code_t wifi_init() {
  WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
 
  unsigned long startTime = millis();
@@ -40,7 +42,7 @@ wifi_status_t wifi_init() {
  * @return  WIFI_STATUS_OK or WIFI_STATUS_ERROR
  ******************************************************************************/
 
-wifi_status_t wifi_check_connection(){
+system_code_t wifi_check_connection(){
      if(WiFi.status() == WL_CONNECTED){
         return WIFI_STATUS_OK;
    }
@@ -59,15 +61,12 @@ wifi_status_t wifi_check_connection(){
  * @return  void
  ******************************************************************************/
 
-void handle_wifi_status(wifi_status_t wifi_status){
+void handle_wifi_status(system_code_t wifi_status){
     if(wifi_status == WIFI_STATUS_OK){
     }
-    else{
-        /* Todo : Blink Function, to indicate problem*/
-        while(wifi_status != WIFI_STATUS_OK){
+    else{ 
             wifi_status = wifi_init();
-        }
-        /* Todo : Stop blinking*/
     }
+       
 }
 
