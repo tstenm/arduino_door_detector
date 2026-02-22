@@ -15,7 +15,7 @@
  * @return  WIFI_STATUS_OK, WIFI_STATUS_TIMEOUT or WIFI_STATUS_ERROR
  ******************************************************************************/
 
-system_code_t wifi_init() {
+wifi_code_t wifi_init() {
  WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
 
  unsigned long startTime = millis();
@@ -42,7 +42,7 @@ system_code_t wifi_init() {
  * @return  WIFI_STATUS_OK or WIFI_STATUS_ERROR
  ******************************************************************************/
 
-system_code_t wifi_check_connection(){
+wifi_code_t wifi_check_connection(){
      if(WiFi.status() == WL_CONNECTED){
         return WIFI_STATUS_OK;
    }
@@ -61,7 +61,7 @@ system_code_t wifi_check_connection(){
  * @return  void
  ******************************************************************************/
 
-void handle_wifi_status(system_code_t wifi_status){
+void handle_wifi_status(system_code_t wifi_status){ // KANN KOMPLETT WEG (?)
     if(wifi_status == WIFI_STATUS_OK){
     }
     else{ 
