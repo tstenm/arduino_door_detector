@@ -15,7 +15,7 @@
  * @return  WIFI_STATUS_OK, WIFI_STATUS_TIMEOUT or WIFI_STATUS_ERROR
  ******************************************************************************/
 
-system_code_t wifi_init() {
+wifi_code_t wifi_init() {
  WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
 
  unsigned long startTime = millis();
@@ -35,20 +35,38 @@ system_code_t wifi_init() {
 
 
 /*******************************************************************************
- * @brief   Tests existing wifi connection. If it fails try to reconnect
+ * @brief   Tests existing wifi connection.
  *
  * @param   /
  *
  * @return  WIFI_STATUS_OK or WIFI_STATUS_ERROR
  ******************************************************************************/
 
-system_code_t wifi_check_connection(){
+wifi_code_t wifi_check_connection(){
      if(WiFi.status() == WL_CONNECTED){
         return WIFI_STATUS_OK;
    }
    else{
-        return wifi_init();
+        return WIFI_STATUS_ERROR;
    }
 }
 
+
+/*******************************************************************************
+ * @brief   Tests existing wifi connection. If the connection is lost or cant be established, the function calls a led blink function and tries to reiniate the connection. 
+ * in a endless loop, because without a wifi connection the product cannot achieve its goal to communicate with a backend
+ *
+ * @param *  WIFI_STATUS_OK or WIFI_STATUS_ERROR
+ *
+ * @return  void
+ ******************************************************************************/
+
+void handle_wifi_status(system_code_t wifi_status){ // KANN KOMPLETT WEG (?)
+    if(wifi_status == WIFI_STATUS_OK){
+    }
+    else{ 
+            wifi_status = wifi_init();
+    }
+       
+}
 

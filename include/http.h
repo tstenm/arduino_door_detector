@@ -1,8 +1,14 @@
-#pragma once
+#ifndef HTTP_H
+#define HTTP_H
 
-#include "hall_sensor.h"
-#include "debug_handler.h"
+typedef enum {
+    HTTP_STATUS_OK = 200,
+    HTTP_STATUS_ERROR = -1,
+} http_code_t;
 
-//void http_request_with_door_state(door_state_t);
-//void http_request_negate_door_state(door_state_t);
-system_code_t http_send_negate(void);
+
+http_code_t http_check_connection(void);
+
+
+#endif
+

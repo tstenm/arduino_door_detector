@@ -1,23 +1,22 @@
-#include <Arduino.h>
 #include "debug_handler.h"
-#include "led.h"
+#include "http.h"
 #include "wifi.h"
 
 
-void debug_handler(system_code_t system_code){
-    switch(system_code){
-        case WIFI_STATUS_OK:
-            led_off();
-            break;
-        case WIFI_STATUS_ERROR:
-            slow_blinking();
-            break;
-            
-        case WIFI_STATUS_TIMEOUT:
-            fast_blinking();
-            break;
-        case HTTP_OK:
-            led_off();
-            break;
-    }   
+void debug_handler(wifi_status_t wifi_status, http_status_t http_status){
+
+    if (wifi_status == WIFI_STATUS_OK) {
+        
+        if (http_status == HTTP_STATUS_OK) {
+            // return value for LED off
+        } else {
+            // return value for solid LED
+        }
+
+    } else if (wifi_status == WIFI_STATUS_TIMEOUT) {
+        // return value for slow blinking LED
+    } else if (wifi_status == WIFI_STATUS_ERROR) {
+        // return value for fast blinking LED
+    }
+
 }
