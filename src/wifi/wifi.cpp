@@ -35,7 +35,7 @@ system_code_t wifi_init() {
 
 
 /*******************************************************************************
- * @brief   Tests existing wifi connection.
+ * @brief   Tests existing wifi connection. If it fails try to reconnect
  *
  * @param   /
  *
@@ -47,26 +47,8 @@ system_code_t wifi_check_connection(){
         return WIFI_STATUS_OK;
    }
    else{
-        return WIFI_STATUS_ERROR;
+        return wifi_init();
    }
 }
 
-
-/*******************************************************************************
- * @brief   Tests existing wifi connection. If the connection is lost or cant be established, the function calls a led blink function and tries to reiniate the connection. 
- * in a endless loop, because without a wifi connection the product cannot achieve its goal to communicate with a backend
- *
- * @param *  WIFI_STATUS_OK or WIFI_STATUS_ERROR
- *
- * @return  void
- ******************************************************************************/
-
-void handle_wifi_status(system_code_t wifi_status){
-    if(wifi_status == WIFI_STATUS_OK){
-    }
-    else{ 
-            wifi_status = wifi_init();
-    }
-       
-}
 
