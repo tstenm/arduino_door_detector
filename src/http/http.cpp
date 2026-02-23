@@ -10,7 +10,7 @@ static const char* servername = "https://87.106.5.130/door_state_altered";
 system_code_t http_send_negate() {
 
     WiFiClientSecure client;
-    client.setInsecure();   // ⚠️ akzeptiert jedes Zertifikat (nur zum Testen!)
+    client.setInsecure();   
 
     HTTPClient http;
     http.begin(client, servername);
