@@ -10,7 +10,7 @@ typedef enum {
 
 wifi_code_t wifi_init(void);
 wifi_code_t wifi_check_connection(void);
-void handle_wifi_status(wifi_code_t);  // KANN WEG (?)
+void handle_wifi_status(wifi_code_t);  
 
 
 #endif

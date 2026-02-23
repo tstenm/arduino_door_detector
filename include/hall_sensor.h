@@ -8,8 +8,8 @@
 
 /*Hall-Effect-Sensor gives back 1, when no megnet nearby and 0 when a magnet is nearby*/
 typedef enum {
-    DOOR_OPEN = 0,
-    DOOR_CLOSED = 1,
+    DOOR_CLOSED = 0,
+    DOOR_OPEN = 1,
 } hall_state_t;
 
 typedef struct

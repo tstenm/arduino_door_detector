@@ -1,7 +1,7 @@
 #include <WiFi.h>
 #include <Arduino.h>
-#include "debug_handler.h"
-#include "wifi.h"        /* eigenes Interface immer zuerst */
+#include <stdint.h>
+#include "wifi.h"        
 #include "auth.h"        /* nur wenn hier benötigt */
 
 
@@ -21,7 +21,7 @@ wifi_code_t wifi_init() {
  unsigned long startTime = millis();
 
     while (WiFi.status() != WL_CONNECTED) {
-        if (millis() - startTime >= 1000u) {
+        if (millis() - startTime >= 100u) {
             return WIFI_STATUS_TIMEOUT;
         }
         if (WiFi.status() == WL_CONNECT_FAILED)

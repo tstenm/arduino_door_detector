@@ -46,7 +46,7 @@ void led_off(){
  * @return  void
  ******************************************************************************/
 void slow_blinking(){
-    for(int i = 0; i < 5; i++){
+    for(int i = 0; i < 1; i++){
         led_on();
         delay(SLOW_BLINKING_DELAY);
         led_off();
@@ -63,7 +63,7 @@ void slow_blinking(){
  * @return  void
  ******************************************************************************/
 void fast_blinking(){
-    for(int i = 0; i < 10; i++){
+    for(int i = 0; i < 1; i++){
         led_on();
         delay(FAST_BLINKING_DELAY);
         led_off();
