@@ -12,6 +12,8 @@
 void init_led(){
     pinMode(LED_PIN, OUTPUT);
 }
+
+
 /*******************************************************************************
  * @brief   Activate LED 
  *
@@ -19,8 +21,6 @@ void init_led(){
  *
  * @return  void
  ******************************************************************************/
-
-
  void led_on(){
     digitalWrite(LED_PIN, HIGH);
 }
@@ -29,7 +29,7 @@ void init_led(){
 /*******************************************************************************
  * @brief   Deactivate LED
  *
- * @param   vodi
+ * @param   void
  *
  * @return  void
  ******************************************************************************/
@@ -38,12 +38,10 @@ void led_off(){
 }
 
 
-
-
 /*******************************************************************************
  * @brief   Lets LED blink slow for .. seconds
  *
- * @param   vodi
+ * @param   void
  *
  * @return  void
  ******************************************************************************/
@@ -55,19 +53,37 @@ void slow_blinking(){
         delay(SLOW_BLINKING_DELAY);
     }
 }
+
+
 /*******************************************************************************
  * @brief   Lets LED blink fast for .. seconds
  *
- * @param   vodi
+ * @param   void
  *
  * @return  void
  ******************************************************************************/
 void fast_blinking(){
     for(int i = 0; i < 10; i++){
         led_on();
-        delay(500);
+        delay(FAST_BLINKING_DELAY);
         led_off();
-        delay(500);
+        delay(FAST_BLINKING_DELAY);
     }
+}
 
+
+/*******************************************************************************
+ * @brief   Handling the LED command from the debug handler.
+ *
+ * @param   led_command
+ *
+ * @return  void
+ ******************************************************************************/
+void led_error_message(led_state_t led_command) {
+    switch(led_command) {
+        case 1: led_on(); break;
+        case 2: slow_blinking(); break;
+        case 3: fast_blinking(); break;
+        default: led_off(); break; 
+    }
 }

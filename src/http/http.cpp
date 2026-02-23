@@ -7,7 +7,7 @@
 
 static const char* servername = "https://87.106.5.130/door_state_altered";
 
-system_code_t http_send_negate() {
+http_code_t http_send_negate() {
 
     WiFiClientSecure client;
     client.setInsecure();   
@@ -15,11 +15,13 @@ system_code_t http_send_negate() {
     HTTPClient http;
     http.begin(client, servername);
 
+
+
     int httpResponseCode = http.GET();
     Serial.println(httpResponseCode);
 
     http.end();
     delay(1000);
-    return HTTP_OK;
+    return HTTP_STATUS_OK;
 
 }
