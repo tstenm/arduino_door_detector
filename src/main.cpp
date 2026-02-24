@@ -7,6 +7,7 @@
 #include "hall_sensor.h"
 #include "debug_handler.h"
 #include "led.h"
+#include "door_state_handler.h"
 
 
 
