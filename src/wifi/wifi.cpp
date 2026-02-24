@@ -21,7 +21,7 @@ wifi_code_t wifi_init() {
  unsigned long startTime = millis();
 
     while (WiFi.status() != WL_CONNECTED) {
-        if (millis() - startTime >= 100u) {
+        if (millis() - startTime >= TIMEOUT) {
             return WIFI_STATUS_TIMEOUT;
         }
         if (WiFi.status() == WL_CONNECT_FAILED)

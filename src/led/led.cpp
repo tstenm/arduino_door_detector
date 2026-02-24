@@ -1,4 +1,5 @@
 #include <Arduino.h>
+#include <stdint.h>
 #include "led.h"
 
 
@@ -38,6 +39,20 @@ void led_off(){
 }
 
 
+
+/*******************************************************************************
+ * @brief   LED is on for LED_PROGRAM_DURATION Milliseconds
+ *
+ * @param   void
+ *
+ * @return  void
+ ******************************************************************************/
+void no_blinking(){
+    led_on();
+    delay(LED_PROGRAM_DURATION);
+}
+
+
 /*******************************************************************************
  * @brief   Lets LED blink slow for .. seconds
  *
@@ -46,12 +61,15 @@ void led_off(){
  * @return  void
  ******************************************************************************/
 void slow_blinking(){
-    for(int i = 0; i < 1; i++){
+    const int LED_SWITCHES = 2;
+    int N_ITERATIONS = LED_PROGRAM_DURATION / SLOW_BLINKING_DELAY / LED_SWITCHES ;
+    for(int i;i < N_ITERATIONS; i++){
         led_on();
         delay(SLOW_BLINKING_DELAY);
         led_off();
         delay(SLOW_BLINKING_DELAY);
     }
+    
 }
 
 
@@ -63,7 +81,10 @@ void slow_blinking(){
  * @return  void
  ******************************************************************************/
 void fast_blinking(){
-    for(int i = 0; i < 1; i++){
+    const int LED_SWITCHES = 2;
+    int N_ITERATIONS = LED_PROGRAM_DURATION / FAST_BLINKING_DELAY / LED_SWITCHES ;
+    Serial.println(N_ITERATIONS);
+    for(int i = 0; i < N_ITERATIONS; i++){
         led_on();
         delay(FAST_BLINKING_DELAY);
         led_off();
@@ -81,9 +102,11 @@ void fast_blinking(){
  ******************************************************************************/
 void led_error_message(led_state_t led_command) {
     switch(led_command) {
-        case 1: led_on(); break;
-        case 2: slow_blinking(); break;
-        case 3: fast_blinking(); break;
+        case LED_ON: no_blinking(); break;
+        case LED_BLINK_SLOW: slow_blinking(); break;
+        case LED_BLINK_FAST: fast_blinking(); break;
+        case LED_OFF: led_off(); break;
         default: led_off(); break; 
     }
 }
+

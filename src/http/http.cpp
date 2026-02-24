@@ -25,15 +25,13 @@ http_code_t http_send_manual_door_status(hall_state_t door_state) {
     }
     else{
         strcpy(door_state_str, "Closed");
-    }
-    Serial.print("door_state.current_value = ");
-    Serial.println(door_state);
-    Serial.println(door_state_str);     
-    http.addHeader("Accept", door_state_str, false, false);
+    }   
+    const bool REPLACE = false;
+    const bool APPEND = false;
+    http.addHeader("Accept", door_state_str, REPLACE, APPEND);
     http.begin(client, servername);
     int httpResponseCode = http.GET();  
-   
-    if(httpResponseCode == 200){
+    if(httpResponseCode == HTTP_CODE_OK){
         return HTTP_STATUS_OK;
     }
     else{

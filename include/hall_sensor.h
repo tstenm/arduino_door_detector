@@ -12,17 +12,11 @@ typedef enum {
     DOOR_OPEN = 1,
 } hall_state_t;
 
-typedef struct
-{
-    hall_state_t current_value;
-    hall_state_t previous_value;
-} door_state_t; 
+
 
 
 
 void init_hall_pin(void);
 hall_state_t read_hall_sensor(void);
-void update_door_state( door_state_t*, hall_state_t);
-void init_door_state(door_state_t*, hall_state_t);
-bool door_state_altered(door_state_t*);
+
 
