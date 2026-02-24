@@ -15,19 +15,19 @@ led_state_t wifi_debug_handler(wifi_code_t wifi_status) {
 
 led_state_t http_debug_handler(wifi_code_t wifi_status, http_code_t http_status){
 
-    if (wifi_status == WIFI_STATUS_OK) {
-        
-        if (http_status == HTTP_STATUS_OK || NO_HTTP_REQUEST) {
+    switch (wifi_status)
+    {
+        case WIFI_STATUS_OK:
+         if (http_status == HTTP_STATUS_OK || NO_HTTP_REQUEST) {
             return LED_OFF;
         }
         else 
         {
             return LED_ON;
         }
-
-    } else if (wifi_status == WIFI_STATUS_TIMEOUT) {
-        return LED_BLINK_SLOW;
-    } else if (wifi_status == WIFI_STATUS_ERROR) {
-        return LED_BLINK_FAST;
+        break;
+        case WIFI_STATUS_TIMEOUT: return LED_BLINK_SLOW; break;
+        case WIFI_STATUS_ERROR: return LED_BLINK_FAST; break;
+        default : return LED_OFF; break;
     }
 }

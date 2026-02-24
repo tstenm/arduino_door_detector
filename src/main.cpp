@@ -24,7 +24,7 @@ void setup() {
 }
 
 void loop() {
-    wifi_code_t wifi_status = wifi_check_connection();
+    wifi_code_t wifi_status = wifi_check_connection();    
     led_error_message(wifi_debug_handler(wifi_status));
     hall_state_t hall_value = read_hall_sensor();
     update_door_state(&door_state, hall_value);

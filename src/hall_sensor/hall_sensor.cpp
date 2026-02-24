@@ -23,7 +23,7 @@ void init_hall_pin(){
  *
  * @return  DOOR_OPEN or DOOR_CLOSED
  ******************************************************************************/
-//tested
+
 hall_state_t read_hall_sensor(){
     if(digitalRead(HALL_PIN)){
         return DOOR_CLOSED;
