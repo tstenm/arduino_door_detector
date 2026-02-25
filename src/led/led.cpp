@@ -54,7 +54,7 @@ void no_blinking(){
 
 
 /*******************************************************************************
- * @brief   Lets LED blink slow for .. seconds
+ * @brief   Lets LED blink slow for LED_PROGRAM_DURATION Milliseconds
  *
  * @param   void
  *
@@ -74,7 +74,7 @@ void slow_blinking(){
 
 
 /*******************************************************************************
- * @brief   Lets LED blink fast for .. seconds
+ * @brief   Lets LED blink fast for LED_PROGRAM_DURATION Milliseconds
  *
  * @param   void
  *
@@ -94,7 +94,7 @@ void fast_blinking(){
 
 
 /*******************************************************************************
- * @brief   Handling the LED command from the debug handler.
+ * @brief   Handling the LED command from the debug handler and calling a led function, depending on the code
  *
  * @param   led_command
  *
@@ -106,7 +106,8 @@ void led_error_message(led_state_t led_command) {
         case LED_BLINK_SLOW: slow_blinking(); break;
         case LED_BLINK_FAST: fast_blinking(); break;
         case LED_OFF: led_off(); break;
-        default: led_off(); break; 
+        default: /*The debug_handler function only returns one of the above values, 
+        thus there is no need for a default case */ 
     }
 }
 

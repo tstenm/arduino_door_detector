@@ -11,7 +11,13 @@
 static const char* servername = "https://87.106.5.130/door_state_altered";
 
 
-
+/*******************************************************************************
+ * @brief   This function is called, if the door status changed. It sends a http request, with a USER-AGENT to verify itself at the backend and the current door status
+ *
+ * @param   hall_state_t
+ *
+ * @return  http_code_t
+ ******************************************************************************/
 http_code_t http_send_manual_door_status(hall_state_t door_state) {
 
     WiFiClientSecure client;
@@ -32,14 +38,21 @@ http_code_t http_send_manual_door_status(hall_state_t door_state) {
     http.begin(client, servername);
     int httpResponseCode = http.GET();  
     if(httpResponseCode == HTTP_CODE_OK){
+         http.end();
         return HTTP_STATUS_OK;
     }
     else{
+         http.end();
         return HTTP_STATUS_ERROR;
     }
-     http.end();
+    
 }
-
+/*******************************************************************************
+ * @brief   Calls the http_send_manual_door_status function, if the door state changed. Otherwise it returns a code, that indicated, that no call was made
+ * @param   hall_state_t, bool
+ *
+ * @return  http_code_t
+ ******************************************************************************/
 http_code_t decide_http_function(hall_state_t door_state, bool door_state_altered){
     if(door_state_altered){
         return http_send_manual_door_status(door_state);

@@ -28,6 +28,8 @@ led_state_t http_debug_handler(wifi_code_t wifi_status, http_code_t http_status)
         break;
         case WIFI_STATUS_TIMEOUT: return LED_BLINK_SLOW; break;
         case WIFI_STATUS_ERROR: return LED_BLINK_FAST; break;
-        default : return LED_OFF; break;
+        default : /*This function only takes in wifi_code_t and http_code_t parameters, those are defined by us and can only 
+        take values, that we have defined in the according .h files. Thus this statement will not be reached, because only the three are known
+        */
     }
 }
