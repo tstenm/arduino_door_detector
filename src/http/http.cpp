@@ -36,7 +36,7 @@ http_code_t http_send_manual_door_status(hall_state_t door_state) {
     const bool APPEND = false;
     http.addHeader("Accept", door_state_str, REPLACE, APPEND);
     http.begin(client, servername);
-    int httpResponseCode = http.GET();  
+    int16_t httpResponseCode = http.GET();  
     if(httpResponseCode == HTTP_CODE_OK){
          http.end();
         return HTTP_STATUS_OK;

@@ -61,9 +61,9 @@ void no_blinking(){
  * @return  void
  ******************************************************************************/
 void slow_blinking(){
-    const int LED_SWITCHES = 2;
-    int N_ITERATIONS = LED_PROGRAM_DURATION / SLOW_BLINKING_DELAY / LED_SWITCHES ;
-    for(int i;i < N_ITERATIONS; i++){
+    const uint8_t LED_SWITCHES = 2U;
+    uint32_t N_ITERATIONS = LED_PROGRAM_DURATION / SLOW_BLINKING_DELAY / LED_SWITCHES ;
+    for(uint32_t i = 0U;i < N_ITERATIONS; i++){
         led_on();
         delay(SLOW_BLINKING_DELAY);
         led_off();
@@ -81,10 +81,10 @@ void slow_blinking(){
  * @return  void
  ******************************************************************************/
 void fast_blinking(){
-    const int LED_SWITCHES = 2;
-    int N_ITERATIONS = LED_PROGRAM_DURATION / FAST_BLINKING_DELAY / LED_SWITCHES ;
+    const uint8_t LED_SWITCHES = 2U;
+    uint32_t N_ITERATIONS = LED_PROGRAM_DURATION / FAST_BLINKING_DELAY / LED_SWITCHES ;
     Serial.println(N_ITERATIONS);
-    for(int i = 0; i < N_ITERATIONS; i++){
+    for(uint32_t i = 0U; i < N_ITERATIONS; i++){
         led_on();
         delay(FAST_BLINKING_DELAY);
         led_off();

@@ -10,15 +10,11 @@ typedef enum {
     NO_HTTP_REQUEST = -2,
 } http_code_t;
 
-typedef enum{
-    HTTP_AUTOMATIC = 0,
-    HTTP_MANUAL = 1,
-} http_function_t;
 
 
 
 
-http_code_t http_send_manual_door_status(int);
+http_code_t http_send_manual_door_status(hall_state_t);
 http_code_t decide_http_function(hall_state_t, bool);
 #endif
 
