@@ -2,7 +2,7 @@
 #include <Arduino.h>
 #include <stdint.h>
 #include "wifi.h"        
-#include "auth.h"        /* nur wenn hier benötigt */
+#include "auth.h"        
 
 
 
@@ -35,7 +35,8 @@ wifi_code_t wifi_init() {
 
 
 /*******************************************************************************
- * @brief   Tests existing wifi connection.
+ * @brief   Tests existing wifi connection. If the wifi connection is lost it tries to reconnect, before 
+ * returning a failure code.
  *
  * @param   /
  *

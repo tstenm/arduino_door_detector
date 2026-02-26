@@ -1,4 +1,5 @@
-#pragma once
+#ifndef DOOR_STATE_HANDLER_H
+#define DOOR_STATE_HANDLER_H
 #include <stdbool.h>
 #include <stdint.h>
 #include "hall_sensor.h"
@@ -12,3 +13,5 @@ typedef struct
 void update_door_state( door_state_t*, hall_state_t);
 void init_door_state(door_state_t*, hall_state_t);
 bool door_state_altered(door_state_t*);
+
+#endif

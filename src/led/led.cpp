@@ -106,8 +106,7 @@ void led_error_message(led_state_t led_command) {
         case LED_BLINK_SLOW: slow_blinking(); break;
         case LED_BLINK_FAST: fast_blinking(); break;
         case LED_OFF: led_off(); break;
-        default: /*The debug_handler function only returns one of the above values, 
-        thus there is no need for a default case */ 
+        default: led_off(); break;
     }
 }
 

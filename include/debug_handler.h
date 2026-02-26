@@ -1,4 +1,3 @@
-#pragma once
 #ifndef _DEBUG_HANDLER_H
 #define _DEBUG_HANDLER_H
 

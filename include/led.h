@@ -1,11 +1,11 @@
-#pragma once
+#ifndef LED_H
+#define LED_H
 #define LED_PIN 2
 #define SLOW_BLINKING_DELAY 1000
 #define FAST_BLINKING_DELAY 200
 
 
-/* Todo : Arithmetik in Pre-Prozessor Anweisung schreiben, sodas slow und fast blinking die selbe Zeit dauern
-*/
+
 #define LED_PROGRAM_DURATION 10000
 
 typedef enum {
@@ -23,3 +23,5 @@ void no_blinking(void);
 void slow_blinking(void);
 void fast_blinking(void);
 void led_error_message(led_state_t);
+
+#endif

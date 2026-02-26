@@ -10,7 +10,7 @@
  *
  * @return  void
  ******************************************************************************/
-// tested
+
 void init_door_state(door_state_t * const door_state,
                      const hall_state_t hall_state)
 {
@@ -25,7 +25,7 @@ void init_door_state(door_state_t * const door_state,
  *
  * @return  void
  ******************************************************************************/
-//tested
+
 void update_door_state(door_state_t * const door_state, const hall_state_t hall_state){
     door_state->previous_value  = door_state->current_value;
     door_state->current_value = hall_state;
@@ -34,13 +34,13 @@ void update_door_state(door_state_t * const door_state, const hall_state_t hall_
 
 
 /*******************************************************************************
- * @brief   Compares both values in door_state_t, to check for updates. 
+ * @brief   Compares both values in door_state_t, to check for updates in the door state. 
  *
  * @param   door_state_t
  *
  * @return  true or false
  ******************************************************************************/
-//tested 
+
 bool door_state_altered(door_state_t * const door_state){
     return(door_state->current_value != door_state->previous_value);
 }

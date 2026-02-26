@@ -1,9 +1,9 @@
-#pragma once
-
 #ifndef HTTP_H
 #define HTTP_H
 #include <stdint.h>
 #include "hall_sensor.h"
+
+
 typedef enum {
     HTTP_STATUS_OK = 200,
     HTTP_STATUS_ERROR = -1,
