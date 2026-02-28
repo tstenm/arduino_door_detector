@@ -24,10 +24,10 @@ void init_hall_pin(){
 hall_state_t read_hall_sensor(){
     uint8_t hall_value = digitalRead(HALL_PIN);
     if(hall_value){
-        return DOOR_CLOSED;
+        return DOOR_OPEN;
     }
     else{
-        return DOOR_OPEN;
+        return DOOR_CLOSED;
     }
 }
 

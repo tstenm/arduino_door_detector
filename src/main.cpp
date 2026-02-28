@@ -8,6 +8,7 @@
 #include "debug_handler.h"
 #include "led.h"
 #include "door_state_handler.h"
+#include "test_suite.h"
 
 
 
@@ -23,16 +24,22 @@ void setup() {
     wifi_status = wifi_check_connection();
     led_state_t led_state = wifi_debug_handler(wifi_status);
     led_error_message(led_state);
-    decide_http_function(door_state.current_value, true);
+    http_code_t http_code = decide_http_function(door_state.current_value, true);
+    led_state = http_debug_handler(wifi_status, http_code);
+    led_error_message(led_state);
+    #ifdef TESTS_ACTIVATED
+    run_tests();  
+    #endif
 }
 
 void loop() {
-    
     wifi_code_t wifi_status = wifi_check_connection();    
     led_state_t led_state = wifi_debug_handler(wifi_status);
     led_error_message(led_state);
     hall_state_t hall_value = read_hall_sensor();
     update_door_state(&door_state, hall_value);    
     bool door_state_altered_indicator = door_state_altered(&door_state);
-    decide_http_function(door_state.current_value, door_state_altered_indicator);
+    http_code_t http_code = decide_http_function(door_state.current_value, door_state_altered_indicator);
+    led_state = http_debug_handler(wifi_status, http_code);
+    led_error_message(led_state);
 }

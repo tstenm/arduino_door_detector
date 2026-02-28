@@ -24,13 +24,16 @@ wifi_code_t wifi_init() {
         if (millis() - startTime >= TIMEOUT) {
             return WIFI_STATUS_TIMEOUT;
         }
-        if (WiFi.status() == WL_CONNECT_FAILED)
+    }
+    if (WiFi.status() == WL_CONNECTED)
         {
+            return WIFI_STATUS_OK;
+        }
+        else {
             return WIFI_STATUS_ERROR;
         }
 
-    }
-    return WIFI_STATUS_OK;
+    
 }
 
 
